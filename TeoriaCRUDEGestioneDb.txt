@@ -1,0 +1,22 @@
+﻿CRUD Operation
+
+C - create
+R - read (Get + Fetch)
+U - update
+D - delete
+
+3 metodi per gestire l'ereditarietà con il database
+
+1 -> Creazione di una tabella contenente le proprietà della classe padre
+     Creazione delle tabelle contententi solo le proprietà delle classi figlie
+	 Le classi figlie devono avere anche una colonna che contine il riferimento all'id della tabella del padre  
+	 In caso di READ bisogna ricordarsi di fare la join tra la tabella padre e la tabella figlio
+	 In caso di CREATE bisogna inserire prima i dati nella tabella pdre per ottenere l'idPadre e poi inserire i dati nella tabella figlio
+	 In caso di DELETE bisogna prima ottenere l'idPadre facendo una get della riga sulla tabella figlio e poi procedere con la cancellazione della riga per entrambe le tabelle padre e figlio
+	 In caso di UPDATE bisogna prima ottenere l'idPadre facendo una get della riga sulla tabella figlio e poi procedere con la modifica della riga di entrambe le tabelle padre e figlio
+	 
+2 -> Creazione delle sole tabelle figlie contenenti anche le proprietà del padre. Ogni entità viene separata dalle altre
+		  
+3 -> Creazione di un'unica tabella contenente le proprietà del padre non nulle e tutte le proprietà dei figli nullabili più una colonna discriminator che conterrà il nome della classe
+     Ogni entità gestirà tutte le colonne valorizzando solo quelle di proprio interesse e mettendo nulle le altre.
+	 Le query sono sostanzialmente identiche
